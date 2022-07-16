@@ -2,11 +2,11 @@ import cv2
 import numpy as np
 
 def gstreamer_pipeline(
-    capture_width=1920,
-    capture_height=1080,
+    capture_width=1280,
+    capture_height=720,
     display_width=1280,
     display_height=720,
-    framerate=30,
+    framerate=60,
     flip_method=0,
     
 ):
@@ -76,10 +76,10 @@ def show_camera():
                     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 3) #drawing rectangle
                     
                     # Finding center of countour
+                    cv2.drawContours(frame, [max_contour], -1, (0,255,0), 3)
                     M = cv2.moments(max_contour)
                     cx = int(M['m10']/M['m00'])
                     cy = int(M['m01']/M['m00'])
-
                     # Checking if the center of the contour is around the center of the screen
                     if ((x_min < cx) and (cx < x_max) and (y_min < cy) and (cy < y_max)):
                         cv2.circle(frame, (cx, cy), 7, (255,255, 255), -1)

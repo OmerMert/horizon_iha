@@ -10,8 +10,11 @@ import time
 i2c_bus0 = busio.I2C(board.SCL, board.SDA)
 kit = ServoKit(channels=16,i2c=i2c_bus0)
              
-kit.servo[0].angle = 0
-time.sleep(1)
+
 kit.servo[0].angle = 180
-time.sleep(1)
+time.sleep(5)
+kit.servo[0].angle = 0
+time.sleep(5)
+kit.servo[0].angle = 180
+time.sleep(5)
 kit.servo[0].angle = 0
